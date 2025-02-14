@@ -1,0 +1,239 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #faf0e6;
+    color: #333;
+}
+
+header {
+    background-color: #6b3e26;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+header .search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+header .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .search-bar button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+header .search-bar button:hover {
+    background-color: #555;
+}
+
+header .user-options a {
+    color: #FAF0E6;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+header .user-options a:hover {
+    color: #F4A460;
+}
+
+nav.categories {
+    background-color: #D2B48C;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav.categories a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 8px;
+}
+
+nav.categories a:hover {
+    background-color: #F4A460;
+    color: #fff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F4A460;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 20px;
+    width: 600px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+}
+
+.dropdown-content .dropdown-column {
+    float: left;
+    width: 23%;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #804000;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-wrap: wrap;
+    opacity: 1;
+}
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.page-title h1 {
+    flex: 1;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtext {
+    color: #ff4081;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 50%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4081;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e03572;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.cities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.city {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 150px;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.city:hover {
+    transform: scale(1.05);
+}
+
+.city img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.city p {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.selected-info {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

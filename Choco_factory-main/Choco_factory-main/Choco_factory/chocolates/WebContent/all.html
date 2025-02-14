@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chocolates</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<style>
+	.logo {
+    /* Adjust width and height as needed */
+    width: 150px; /* Example width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Optional: Style the logo image itself */
+#logo-img {
+    width: 65%; /* Ensures the logo fills its container */
+    height: 65%; /* Ensures the logo scales proportionally */
+    display: block; /* Ensures no extra space around the image */
+}
+#cart-count {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+        #cart-icon {
+        position: relative;
+        display: inline-block;
+    }
+    .wishlist-icon {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed for vertical positioning */
+    right: 10px; /* Adjust as needed for horizontal positioning */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 50%;
+    color: red;
+    z-index: 1;
+}
+
+.wishlist-icon i {
+    color: #c2406b;
+    font-size: 20px;
+}
+.wishlist-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width:80%;
+            max-width:600px;
+            border-radius:8px;
+            overflow-y:auto;
+            max-height:80%;
+        }
+.wishlist-popup h2 {
+            margin-top: 0;
+        }
+        .wishlist-popup ul {
+            list-style: none;
+            padding: 0;
+        }
+        .wishlist-popup li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .wishlist-popup li:last-child {
+            border-bottom: none;
+        }
+</style>
+<body>
+    <header>
+        <div class="logo">
+    		<img src="logo.jpg" alt="Chocolate Fusion" id="logo-img">
+		</div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for gifts" oninput="filterProducts()">
+            <button onclick="filterProducts()">Search</button>
+        </div>
+        <div class="user-options">
+            <a href="del.html"><i class="fas fa-map-marker-alt"></i> Delivery Location</a>
+            <a href="cart.html" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+            <a href="login.jsp"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav class="categories">
+        <a href="#">EXPRESS</a>
+        <a href="#">CAKES</a>
+        <a href="#">FLOWERS</a>
+        <a href="#">PLANTS</a>
+        <a href="#">GIFTS</a>
+        <a href="#">PERSONALIZED GIFTS</a>
+        <div class="dropdown">
+            <a href="#">CHOCOLATES</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Type</h4>
+                    <a href="all.html"><i>All Chocolates</i></a>
+                    <a href="best.html"><i>Best Seller Chocolates</i></a>
+                    <a href="personalized.html"><i>Personalized Chocolates</i></a>
+                    <a href="bouquet.html"><i>Chocolate Bouquet</i></a>
+                    <a href="premium.html"><i>Premium chocolates</i></a>
+                    <a href="hampers.html"><i>Chocolate Hampers</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Flavor</h4>
+                    <a href="dark.html"><i>Dark Chocolates</i></a>
+                    <a href="milk.html"><i>Milk Chocolates</i></a>
+                    <a href="white.html"><i>White Chocolates</i></a>
+                    <a href="sugarfree.html"><i>Sugar Free Chocolates</i></a>
+                    <a href="handmade.html"><i>Hand Made Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Brand</h4>
+                    <a href="winni.html"><i>Winni Chocolates</i></a>
+                    <a href="page2.html"><i>Cadbury Chocolates</i></a>
+                    <a href="page1.html"><i>Ferrero rocher Chocolates</i></a>
+                    <a href="justrufs.html"><i>Jus trufs Chocolates</i></a>
+                    <a href="Velvet.html"><i>Velvet Fine Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Combos</h4>
+                    <a href="combos.html"><i>Chocolate Combos</i></a>
+                    <a href="cakes.html"><i>Chocolate And Cakes</i></a>
+                    <a href="flowers.html"><i>Chocolate And Flowers</i></a>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;By Occasions</h4>
+                    <a href="birth.html"><i>Birthday Chocolate</i></a>
+                    <a href="anni.html"><i>Anniversary Chocolate</i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#">COMBOS</a>
+        <a href="#">BIRTHDAY</a>
+        <a href="#">ANNIVERSARY</a>
+        <a href="#">OCCASIONS</a>
+    </nav>
+    <main>
+        <div class="page-title">
+            <h1>All Chocolates </h1>
+            <div class="filter-sort">
+                <div class="date">
+                    <label for="delivery-date">Delivery Date:</label>
+                    <input type="date" id="delivery-date">
+                </div>
+                <div class="filter">
+                    <label for="filter-price">Filter By Price</label>
+                    <select id="filter-price" onchange="filterProducts()">
+                        <option value="all">All Products</option>
+                        <option value="under-1000">Under ₹1000</option>
+                        <option value="1000-5000">₹1000 - ₹5000</option>
+                        <option value="above-5000">Above ₹5000</option>
+                    </select>
+                </div>
+                <div class="sort">
+                    <label for="sort-by">Sort By</label>
+                    <select id="sort-by" onchange="sortProducts()">
+                        <option value="popularity">Popularity</option>
+                        <option value="low-to-high">Price: Low to High</option>
+                        <option value="high-to-low">Price: High to Low</option>
+                        <option value="newest-first">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="products" id="products">
+            <div class="product" data-price="1599" data-name="Premium box of assorted Chocolates 18pcs">
+                <img src="https://assets.winni.in/product/primary/2024/1/93521.jpeg?dpr=1&w=400" alt="Premium box of assorted Chocolates 18pcs">
+                <li><a href="productDetails?id=161">Premium box of assorted Chocolates 18pcs</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹1,599</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            
+            <div class="product" data-price="999" data-name="Adorable teddy and dark chocolates">
+                <img src="https://assets.winni.in/product/primary/2023/1/80967.jpeg?dpr=1&w=400" alt="Adorable teddy and dark chocolates">
+                <li><a href="productDetails?id=1">Adorable teddy and dark chocolates</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹999</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            
+            </div>
+            <div class="product" data-price="1749" data-name="Chocolates Treats for joyful moments">
+                <img src="https://assets.winni.in/product/primary/2024/2/94164.jpeg?dpr=1&w=400" alt="Chocolates Treats for joyful moments">
+                
+                <h2>Chocolates Treats for joyful moments</h2>
+                <p>₹1,749</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            
+            <div class="product" data-price="1249" data-name="Classic chocolates of Truffeles joy box of 12">
+                <img src="https://assets.winni.in/product/primary/2023/10/89864.jpeg?dpr=1&w=400" alt="Classic chocolates of Truffeles joy box of 12">
+                
+                <h2>Classic chocolates of Truffeles joy box of 12</h2>
+                <p>₹1,249</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+          
+            <div class="product" data-price="1529" data-name="Desire of hearts">
+                <img src="https://assets.winni.in/product/primary/2014/6/31480.jpeg?dpr=1&w=400" alt="Desire of hearts">
+                
+                <h2>Desire of hearts</h2>
+                <p>₹1,529</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+         
+            </div>
+            <div class="product" data-price="1449" data-name="Enchanting floral delights collecton">
+                <img src="https://assets.winni.in/product/primary/2023/6/85541.jpeg?dpr=1&w=400" alt="Enchanting floral delights collecton">
+                
+                <h2>Enchanting floral delights collecton</h2>
+                <p>₹1,449</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+           <div class="product" data-price="699" data-name="Express The Moment">
+<img src="https://assets.winni.in/product/primary/2014/6/31478.jpeg?dpr=1&w=400" alt="Express The Moment">
+<h2>Express The Moment</h2>
+<p>₹699</p>
+<button onclick="viewProductDetails('Express The Moment', '699','https://assets.winni.in/product/primary/2014/6/31478.jpeg?dpr=1&w=400' )">View Details</button>
+</div>
+<div class="product" data-price="1249" data-name="Alluring Red Roses With Chocolates">
+<img src="https://assets.winni.in/product/primary/2023/2/82854.jpeg?dpr=1&w=400" alt="Alluring Red Roses With Chocolates">
+<h2>Alluring Red Roses With Chocolates</h2>
+<p>₹1,249</p>
+<button onclick="viewProductDetails('Alluring Red Roses With Chocolates', '`1249', 'https://assets.winni.in/product/primary/2023/2/82854.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="849" data-name="Dairy Milk Chocolate Basket">
+<img src="https://assets.winni.in/product/primary/2014/10/49715.jpeg?dpr=1&w=400" alt="Dairy Milk Chocolate Basket">
+<h2>Dairy Milk Chocolate Basket</h2>
+<p>₹849</p>
+<button onclick="viewProductDetails('Dairy Milk Chocolate Basket', '849', 'https://assets.winni.in/product/primary/2014/10/49715.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="849" data-name="Glowing With Love ">
+                <img src="https://assets.winni.in/product/primary/2014/6/30536.jpeg?dpr=1&w=400" alt="Glowing With Love">
+                <h2>Glowing With Love </h2>
+                <p>₹849</p> 
+                <button onclick="viewProductDetails('Glowing With Love ', '849', 'https://assets.winni.in/product/primary/2014/6/30536.jpeg?dpr=1&w=400')">View Details</button>
+            </div>
+            <div class="product" data-price="699" data-name="Blue Splash">
+                <img src="https://assets.winni.in/product/primary/2014/8/39474.jpeg?dpr=1&w=400" alt="Blue Splash">
+                <h2>Blue Splash</h2>
+                <p>₹699</p>
+                <button onclick="viewProductDetails('Blue Splash', '699', 'https://assets.winni.in/product/primary/2014/8/39474.jpeg?dpr=1&w=400')">View Details</button>
+            </div>
+            <div class="product" data-price="849" data-name="Color Of Red">
+                <img src="https://assets.winni.in/product/primary/2024/2/93891.jpeg?dpr=1&w=400" alt="Color Of Red">
+                <h2>Color Of Red</h2>
+                <p>₹849</p>
+                <button onclick="viewProductDetails('Color Of Red', '849','https://assets.winni.in/product/primary/2024/2/93891.jpeg?dpr=1&w=400')">View Details</button>
+            </div>
+            <div class="product" data-price="1,769" data-name="Delight Divine Combo">
+                <img src="https://assets.winni.in/product/primary/2022/7/64892.jpeg?dpr=1&w=400" alt="Delight Divine Combo">
+                <h2>Delight Divine Combo</h2>
+                <p>₹1,769</p>
+                <button onclick="viewProductDetails('Delight Divine Combo', '1,769', 'https://assets.winni.in/product/primary/2022/7/64892.jpeg?dpr=1&w=400')">View Details</button>
+            </div>
+            <div class="product" data-price="779" data-name="Luxury Style">
+                <img src="https://assets.winni.in/product/primary/2021/10/55169.jpeg?dpr=1&w=400" alt="Luxury Style">
+                <h2>Luxury Style</h2>
+                <p>₹779</p>
+                <button onclick="viewProductDetails('Luxury Style', '779','https://assets.winni.in/product/primary/2021/10/55169.jpeg?dpr=1&w=400')">View Details</button>
+            </div>
+            <div class="product" data-price="1,229" data-name="Mixed Roses Arrangement">
+                <img src="https://assets.winni.in/product/primary/2022/9/73371.png?dpr=1&w=400" alt="Meadow In A Hamper">
+                <h2>Mixed Roses Arrangement</h2>
+                <p>₹1,229</p>
+                <button onclick="viewProductDetails('Mixed Roses Arrangement', '1,299', 'https://assets.winni.in/product/primary/2022/9/73371.png?dpr=1&w=400')">View Details</button>
+            </div>
+            <div class="product" data-price="999" data-name="Cossy Bunch Of Love">
+                <img src="https://assets.winni.in/product/primary/2021/10/55154.jpeg?dpr=1&w=400" alt="Cossy Bunch Of Love">
+                <h2>Cossy Bunch Of Love</h2>
+                <p>₹999</p>
+                <button onclick="viewProductDetails('Cossy Bunch Of Love', '999', 'https://assets.winni.in/product/primary/2021/10/55154.jpeg?dpr=1&w=400')">View Details</button>    
+            </div>
+            <div class="product" data-price="799" data-name="Ocean Of Blue">
+                <img src="https://assets.winni.in/product/primary/2014/8/39472.jpeg?dpr=1&w=400" alt="Ocean Of Blue">
+                <h2></h2>Ocean Of Blue
+                <p>₹799</p>
+                <button onclick="viewProductDetails('Ocean Of Blue', '799', 'https://assets.winni.in/product/primary/2014/8/39472.jpeg?dpr=1&w=400')">View Details</button> 
+            </div>
+<div class="product" data-price="1449" data-name="Chocolaty Treats For Joyful Moments">
+<img src="https://assets.winni.in/product/primary/2024/2/94164.jpeg?dpr=1&w=400" alt="Chocolaty Treats For Joyful Moments">
+<h2>Chocolaty Treats For Joyful Moments</h2>
+<p>₹1,449</p>
+<button onclick="viewProductDetails('Chocolaty Treats For Joyful Moments', '1449', 'https://assets.winni.in/product/primary/2024/2/94164.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="899" data-name="Cadbury Celebration Box With Pink Roses Box">
+<img src="https://assets.winni.in/product/primary/2023/2/82850.jpeg?dpr=1&w=400" alt="Cadbury Celebration Box With Pink Roses Box">
+<h2>Cadbury Celebration Box With Pink Roses Box</h2>
+<p>₹899</p><button onclick="viewProductDetails('Cadbury Celebration Box With Pink Roses Box', '1449', 'https://assets.winni.in/product/primary/2023/2/82850.jpeg?dpr=1&w=400')">View Details</button>
+
+</div>
+<div class="product" data-price="1449" data-name="Yummilicious Chocolates">
+<img src="https://assets.winni.in/product/primary/2014/8/35078.jpeg?dpr=1&w=400" alt="Yummilicious Chocolates">
+<h2>Yummilicious Chocolates</h2>
+<p>₹1,449</p>
+<button onclick="viewProductDetails('Yummilicious Chocolates', '1449', 'https://assets.winni.in/product/primary/2014/8/35078.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="1999" data-name="Toast Of Chocolates">
+<img src="https://assets.winni.in/product/primary/2014/8/37605.jpeg?dpr=1&w=400" alt="Toast Of Chocolates">
+<h2>Toast Of Chocolates</h2>
+<p>₹1,999</p>
+<button onclick="viewProductDetails('Toast Of Chocolates', '1999', 'https://assets.winni.in/product/primary/2014/8/37605.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="1949" data-name="Sweet Love Combo">
+<img src="https://assets.winni.in/product/primary/2023/1/81627.jpeg?dpr=1&w=400" alt="Sweet Love Combo">
+<h2>Sweet Love Combo</h2>
+<p>₹1,949</p>
+<button onclick="viewProductDetails('Sweet Love Combo', '1999', 'https://assets.winni.in/product/primary/2023/1/81627.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+           
+            <div class="product" data-price="7999" data-name="Classic valentines chocolates">
+                <img src="https://assets.winni.in/product/primary/2024/1/93180.jpeg?dpr=1&w=400" alt="Classic valentines chocolates">
+                
+                <h2>Classic valentines chocolates</h2>
+                <p>₹7,999</p>
+                <button onclick="viewProductDetails('Classic valentines chocolates', '7,999', 'https://assets.winni.in/product/primary/2024/1/93180.jpeg?dpr=1&w=400')">View Details</button>
+            
+            </div>
+            <div class="product" data-price="699" data-name="Cadbury With Rose">
+<img src="https://assets.winni.in/product/primary/2014/6/29990.jpeg?dpr=1&w=400" alt="Cadbury With Rose">
+<h2>Cadbury With Rose</h2>
+<p>₹699</p>
+<button onclick="viewProductDetails('Cadbury With Rose', '699','https://assets.winni.in/product/primary/2014/6/29990.jpeg?dpr=1&w=400' )">View Details</button>
+</div>
+<div class="product" data-price="1249" data-name="Love For Heart Arrangement">
+<img src="https://assets.winni.in/product/primary/2022/6/61658.jpeg?dpr=1&w=400" alt="Love For Heart Arrangement">
+<h2>Love For Heart Arrangement</h2>
+<p>₹1,249</p>
+<button onclick="viewProductDetails('Love For Heart Arrangement', '1249', 'https://assets.winni.in/product/primary/2022/6/61658.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="849" data-name="All In One Chocolate Combo">
+<img src="https://assets.winni.in/product/primary/2023/1/81611.jpeg?dpr=1&w=400" alt="All In One Chocolate Combo">
+<h2>All In One Chocolate Combo</h2>
+<p>₹849</p>
+<button onclick="viewProductDetails('All In One Chocolate Combo', '849', 'https://assets.winni.in/product/primary/2023/1/81611.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="1449" data-name="Weaving Love">
+<img src="https://assets.winni.in/product/primary/2014/6/31618.jpeg?dpr=1&w=400" alt="Weaving Love">
+<h2>Weaving Love</h2>
+<p>₹1,449</p>
+<button onclick="viewProductDetails('Weaving Love', '1449', 'https://assets.winni.in/product/primary/2014/6/31618.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="899" data-name="Exciting Love Mug With Chocolates">
+<img src="https://assets.winni.in/product/primary/2023/1/81600.jpeg?dpr=1&w=400" alt="Exciting Love Mug With Chocolates">
+<h2>Exciting Love Mug With Chocolates</h2>
+<p>₹899</p><button onclick="viewProductDetails('Exciting Love Mug With Chocolates', '1449', 'https://assets.winni.in/product/primary/2023/1/81600.jpeg?dpr=1&w=400')">View Details</button>
+
+</div>
+<div class="product" data-price="1449" data-name="Ferrero Rochers With Red Roses Box">
+<img src="https://assets.winni.in/product/primary/2023/2/82852.jpeg?dpr=1&w=400" alt="Ferrero Rochers With Red Roses Box">
+<h2>Ferrero Rochers With Red Roses Box</h2>
+<p>₹1,449</p>
+<button onclick="viewProductDetails('Ferrero Rochers With Red Roses Box', '1449', 'https://assets.winni.in/product/primary/2023/2/82852.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="1999" data-name="Sweet Fragrance With Ferrero Rocher">
+<img src="https://assets.winni.in/product/primary/2021/10/54278.jpeg?dpr=1&w=400" alt="Sweet Fragrance With Ferrero Rocher">
+<h2>Sweet Fragrance With Ferrero Rocher</h2>
+<p>₹1,999</p>
+<button onclick="viewProductDetails('Sweet Fragrance With Ferrero Rocher', '1999', 'https://assets.winni.in/product/primary/2021/10/54278.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+<div class="product" data-price="1949" data-name="European Chocolates Delight Basket">
+<img src="https://assets.winni.in/product/primary/2023/8/89233.jpeg?dpr=1&w=400" alt="European Chocolates Delight Basket">
+<h2>European Chocolates Delight Basket</h2>
+<p>₹1,949</p>
+<button onclick="viewProductDetails('European Chocolates Delight Basket', '1999', 'https://assets.winni.in/product/primary/2023/8/89233.jpeg?dpr=1&w=400')">View Details</button>
+</div>
+            <div class="product" data-price="1899" data-name="Teddy with cadbury chocolate">
+                <img src="https://assets.winni.in/product/primary/2023/1/81614.jpeg?dpr=1&w=400" alt="Teddy with cadbury chocolate">
+                
+                <h2>Teddy with cadbury chocolate</h2>
+                <p>₹1,899</p>
+                <button onclick="viewProductDetails('Teddy with cadbury chocolate', '1,899', 'https://assets.winni.in/product/primary/2023/1/81614.jpeg?dpr=1&w=400')">View Details</button>
+            </div>
+           
+        </div>
+    </main>
+    <footer>
+        <p>Indulge in the rich, creamy goodness of white chocolates with Winni! Our collection offers an array of premium quality white chocolates, perfect for every occasion. Whether you're treating yourself or gifting a loved one, our white chocolates promise a melt-in-your-mouth experience that will leave you craving for more.</p>
+        <p>Why Choose Winni for Your White Chocolate Cravings?</p>
+        <ul>
+            <li><strong>Wide Range of Selection:</strong> From classic white chocolate bars to unique flavored options, our selection is curated to satisfy every palate.</li>
+            <li><strong>Premium Quality:</strong> We source our chocolates from top-notch brands ensuring you get nothing but the best.</li>
+            <li><strong>Perfect for Gifting:</strong> Packaged elegantly, our white chocolates make for an ideal gift for birthdays, anniversaries, or any special occasion.</li>
+            <li><strong>Convenient Online Shopping:</strong> Browse through our collection and place your order from the comfort of your home. Fast delivery guaranteed!</li>
+        </ul>
+        <p>At Winni, we believe that every moment is a celebration and our white chocolates add the perfect touch of sweetness to your special moments. So why wait? Dive into the world of delicious white chocolates and make your occasions memorable with Winni.</p>
+        <p>Order your favorite white chocolates online today and experience the joy of indulging in the finest treats!</p>
+    
+            
+        </tbody>
+    </table>
+        
+        <p>Data last updated on 22/06/2024</p>
+        <p>Online Ferrero Rocher Chocolates<br>
+		<p>Products in this category have been rated 4.7 out of 5 based on 362 reviews.<br>
+		We have a collection of 49 Products on sale, ranging from INR 999 to INR 8999</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Our Company</h3>
+                <ul>
+                   
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">In News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                   
+                    <li><a href="#">Wishes</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Customer Reviews</a></li>
+                    <li><a href="#">Blog - Celebrate Relations</a></li>
+                    <li><a href="#">Corporate Order</a></li>
+                    <li><a href="#">Franchise Enquiry</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Policy & Security</h3>
+                <ul>
+                  
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Bug Bounty</a></li>
+                    <li><a href="#">Data Security</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Payments and Security</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-social">
+                <h3>Connect with Us</h3>
+                <a href="https://www.facebook.com/WinniGifts"><img src="https://assets.winni.in/groot/2023/07/19/desktop/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/winnigifts/"><img src="https://assets.winni.in/groot/2023/07/19/desktop/instagram.png" alt="Instagram"></a>
+                <a href="https://twitter.com/winni_gifts"><img src="https://assets.winni.in/groot/2023/12/14/desktop/twiter.png" alt="Twitter"></a>
+                <a href="https://www.linkedin.com/company/winni"><img src="https://assets.winni.in/groot/2023/07/19/desktop/linkdin.png" alt="LinkedIn"></a>
+                <a href="https://www.youtube.com/channel/UCsXnWQIHuO3DOr-AhtftD2w"><img src="https://assets.winni.in/groot/2023/07/19/desktop/youtube.png" alt="YouTube"></a>
+                <a href="https://www.whatsapp.com/channel/0029VaAqyET72WTsWYuAqe3Z"><img src="https://assets.winni.in/groot/2024/04/23/mobile/black-whatsapp-icon.png" alt="WhatsApp"></a>
+            </div>
+          
+            <div class="footer-app">
+                <p>Experience Winni on mobile</p>
+                <a href="https://play.google.com/store/apps/details?id=in.winni.app&referrer=utm_source%3Dwinni-website%26utm_medium%3Dweb-link"><img src="https://assets.winni.in/groot/2023/07/19/desktop/google-play.png" alt="Google Play"></a>
+                <a href="https://apps.apple.com/in/app/winni-cake-flowers-gifts/id1080301515"><img src="https://assets.winni.in/groot/2023/07/19/desktop/app-store.png" alt="App Store"></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2024 Winni.in. All Rights Reserved</p>
+                <p>Company Name: Dhawala Online Solutions Private Limited | CIN: U51109KA2012PTC065653 | Regd. Office Address: 3rd Floor, PLOT. NO # 128/P2, EPIP Industrial Area Whitefield, Sonnenahalli Village, Bangalore - 560066 | Contact no. +91 - 7829463510 | E-mail: info@winni.in</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="script.js" > </script>
+    
+</body>
+</html>

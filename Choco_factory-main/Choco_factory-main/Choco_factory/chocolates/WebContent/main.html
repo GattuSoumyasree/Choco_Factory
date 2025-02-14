@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid #000;
+            padding: 15px;
+            text-align: center;
+        }
+        .relation-images {
+            display: flex;
+            justify-content: flex-start; /* Align items from the start */
+            margin-top: 20px;
+            overflow-x: auto; /* Enable horizontal scrolling if necessary */
+        }
+        .relation-item {
+            flex: 0 0 auto; /* Ensure items don't grow or shrink */
+            width: 145px; /* Adjust the width as needed */
+            height: auto; /* Adjust height automatically based on image */
+            background-color: white;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; /* Rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .relation-item:hover {
+            transform: translateY(-5px); /* Move the item up on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+        
+        .relation-item img {
+            max-width: 100%; /* Ensure image fits within its container */
+            max-height: 100%; /* Ensure image fits within its container */
+            object-fit: cover; /* Maintain aspect ratio */
+            border-radius: 10px; /* Match container's rounded corners */
+        }
+        .relation-name {
+            margin-top: 10px;
+        }
+        .outer-rectangle {
+        background-color: #ffe6f2; /* Light pink color */
+        padding: 20px;
+        border-radius: 10px; /* Rounded corners */
+        width: max-content; /* Adjusts width to content */
+        margin: 20px auto; /* Centers the box horizontally */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    }
+        .inner-rectangle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow effect */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow change */
+    }
+
+    .inner-rectangle:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+    }
+
+    .inner-rectangle p {
+        background-color: white; /* White background for each name */
+        padding: 15px 25px; /* Increased padding for better spacing */
+        border-radius: 10px; /* Rounded corners for each name box */
+        margin: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for each name box */
+        font-size: 110%; /* Increased font size by 10% */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    .inner-rectangle p:hover {
+        background-color: #f0f0f0; /* Light grey background on hover */
+        transform: translateY(-3px); /* Move the element up slightly on hover */
+    }
+    .containerr {
+        display: flex;
+        justify-content: center; /* Center align items horizontally */
+        gap: 10px; /* Gap between the images */
+       
+    }
+    .containerr img {
+        max-width: calc(50% - 5px); /* Each image takes 50% of the viewport width minus gap */
+        max-height: 80vh; /* Set maximum height to 80% of viewport height */
+        object-fit: cover;
+        border-radius: 20px; /* Rounded corners */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .containerr img:hover {
+        transform: scale(1.05); /* Scale image up by 5% on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow on hover */
+    }
+    	.logo {
+    /* Adjust width and height as needed */
+    width: 150px; /* Example width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Optional: Style the logo image itself */
+#logo-img {
+    width: 65%; /* Ensures the logo fills its container */
+    height: 65%; /* Ensures the logo scales proportionally */
+    display: block; /* Ensures no extra space around the image */
+}
+#cart-count {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+    		<img src="logo.jpg" alt="Chocolate Fusion" id="logo-img">
+		</div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for gifts" oninput="filterProducts()">
+            <button onclick="filterProducts()">Search</button>
+        </div>
+        <div class="user-options">
+            <a href="del.html"><i class="fas fa-map-marker-alt"></i> Delivery Location</a>
+            <a href="cart.html" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+            <a href="login.jsp"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav class="categories">
+        <a href="#">EXPRESS</a>
+        <a href="#">CAKES</a>
+        <a href="#">FLOWERS</a>
+        <a href="#">PLANTS</a>
+        <a href="#">GIFTS</a>
+        <a href="#">PERSONALIZED GIFTS</a>
+        <div class="dropdown">
+            <a href="#">CHOCOLATES</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Type</h4>
+                    <a href="all.html"><i>All Chocolates</i></a>
+                    <a href="best.html"><i>Best Seller Chocolates</i></a>
+                    <a href="personalized.html"><i>Personalized Chocolates</i></a>
+                    <a href="bouquet.html"><i>Chocolate Bouquet</i></a>
+                    <a href="premium.html"><i>Premium chocolates</i></a>
+                    <a href="hampers.html"><i>Chocolate Hampers</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Flavor</h4>
+                    <a href="dark.html"><i>Dark Chocolates</i></a>
+                    <a href="milk.html"><i>Milk Chocolates</i></a>
+                    <a href="white.html"><i>White Chocolates</i></a>
+                    <a href="sugarfree.html"><i>Sugar Free Chocolates</i></a>
+                    <a href="handmade.html"><i>Hand Made Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Brand</h4>
+                    <a href="winni.html"><i>Winni Chocolates</i></a>
+                    <a href="page2.html"><i>Cadbury Chocolates</i></a>
+                    <a href="page1.html"><i>Ferrero rocher Chocolates</i></a>
+                    <a href="justrufs.html"><i>Jus trufs Chocolates</i></a>
+                    <a href="Velvet.html"><i>Velvet Fine Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Combos</h4>
+                    <a href="combos.html"><i>Chocolate Combos</i></a>
+                    <a href="cakes.html"><i>Chocolate And Cakes</i></a>
+                    <a href="flowers.html"><i>Chocolate And Flowers</i></a>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;By Occasions</h4>
+                    <a href="birth.html"><i>Birthday Chocolate</i></a>
+                    <a href="anni.html"><i>Anniversary Chocolate</i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#">COMBOS</a>
+        <a href="#">BIRTHDAY</a>
+        <a href="#">ANNIVERSARY</a>
+        <a href="#">OCCASIONS</a>
+        
+    </nav>
+    
+    <main>
+        <div class="categories-container">
+            <div class="containerr">
+                <img src="https://assets.winni.in/groot/2023/04/18/desktop/personalised-gifts/photo-frame-desktop.png" alt="Ink Image">
+                <img src="https://assets.winni.in/groot/2023/04/18/desktop/personalised-gifts/banner-right.jpg" alt="Ink Image">
+            </div>
+            <div class="container">
+                
+                <div class="relation-images">
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/21/desktop/personalised-gifts/cushions.jpg" alt="Wife">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/21/desktop/personalised-gifts/mugs.jpg" alt="Husband">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/21/desktop/personalised-gifts/lamps.jpg" alt="Girlfriend">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/21/desktop/personalised-gifts/water-bottles.jpg" alt="Boyfriend">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/18/desktop/personalised-gifts/t-shirt.jpg" alt="Sister">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/18/desktop/personalised-gifts/caricature.jpg" alt="Brother">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/21/desktop/personalised-gifts/chocolate.jpg" alt="Sister">
+                        
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2023/04/21/desktop/personalised-gifts/beer-mugs.jpg" alt="Brother">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="outer-rectangle">
+                <div class="inner-rectangle">
+                    <p>Jewellery</p>
+                    <p>Key Chain</p>
+                    <p>Clutches</p>
+                    <p>Stationery</p>
+                    <p>Personalized Combos</p>
+                    <p>Handbag</p>
+                    <p>Handmade Gifts</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <h2 style="text-align: center; margin-top: 40px ;color: brown">Shop By Relation</h2>
+                <div class="relation-images">
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/wife.jpg" alt="Wife">
+                        <div class="relation-name">Wife</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/husband.jpg" alt="Husband">
+                        <div class="relation-name">Husband</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/girlfriend.jpg" alt="Girlfriend">
+                        <div class="relation-name">Girlfriend</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/boyfriend.jpg" alt="Boyfriend">
+                        <div class="relation-name">Boyfriend</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/sister.jpg" alt="Sister">
+                        <div class="relation-name">Sister</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/brother.jpg" alt="Brother">
+                        <div class="relation-name">Brother</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/mother.jpg" alt="Sister">
+                        <div class="relation-name">Mother</div>
+                    </div>
+                    <div class="relation-item">
+                        <img src="https://assets.winni.in/groot/2022/09/13/desktop/father.jpg" alt="Brother">
+                        <div class="relation-name">Father</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; margin-top: 40px ;color: brown">Handpicked Personalised Gifts for You</h2>
+            <div class="products" id="products">
+                <div class="product" data-price="1599" data-name="Premium box of assorted Chocolates 18pcs">
+                    <img src="https://assets.winni.in/product/primary/2022/1/57331.jpeg?dpr=1&w=400" alt="Premium box of assorted Chocolates 18pcs">
+                    <h2>Golden Black Balloon Decoration</h2>
+                    <p>₹1,599</p>
+                </div>
+                <div class="product" data-price="999" data-name="Adorable teddy and dark chocolates">
+                    <img src="https://assets.winni.in/product/primary/2014/6/33472.jpeg?dpr=1&w=400" alt="Adorable teddy and dark chocolates">
+                    <h2>Happiness With Jade Plant And Buddha</h2>
+                    <p>₹999</p>
+                </div>
+                <div class="product" data-price="1749" data-name="Chocolates Treats for joyful moments">
+                    <img src="https://assets.winni.in/product/primary/2023/7/87689.jpeg?dpr=1&w=400" alt="Chocolates Treats for joyful moments">
+                    <h2>Tasteful Kaju Katli Mithai 200Gm</h2>
+                    <p>₹1,749</p>
+                </div>
+                <div class="product" data-price="1249" data-name="Classic chocolates of Truffeles joy box of 12">
+                    <img src="https://assets.winni.in/product/primary/2014/6/27744.jpeg?dpr=1&w=400" alt="Classic chocolates of Truffeles joy box of 12">
+                    <h2>4 Scrumptious Red Velvet Cupcake</h2>
+                    <p>₹1,249</p>
+                </div>
+                <div class="product" data-price="1529" data-name="Desire of hearts">
+                    <img src="https://assets.winni.in/product/primary/2014/8/36065.jpeg?dpr=1&w=400" alt="Desire of hearts">
+                    <h2>Chocolate Birthday Cake</h2>
+                    <p>₹1,529</p>
+                </div>
+                <div class="product" data-price="1449" data-name="Enchanting floral delights collecton">
+                    <img src="https://assets.winni.in/product/primary/2014/8/44065.jpeg?dpr=1&w=400" alt="Enchanting floral delights collecton">
+                    <h2>Lovely Affection</h2>
+                    <p>₹1,449</p>
+                </div>
+                <div class="product" data-price="7999" data-name="Classic valentines chocolates">
+                    <img src="https://assets.winni.in/product/primary/2023/1/81990.jpeg?dpr=1&w=400" alt="Classic valentines chocolates">
+                    <h2>Majestic Floral In Square Vase</h2>
+                    <p>₹7,999</p>
+                </div>
+                <div class="product" data-price="1899" data-name="Teddy with cadbury chocolate">
+                    <img src="https://assets.winni.in/product/primary/2022/4/59059.jpeg?dpr=1&w=400" alt="Teddy with cadbury chocolate">
+                    <h2>Fairy Lights Photo Strips</h2>
+                    <p>₹1,899</p>
+                </div>
+                <div class="product" data-price="1529" data-name="Desire of hearts">
+                    <img src="https://assets.winni.in/product/primary/2014/6/27706.jpeg?dpr=1&w=400" alt="Desire of hearts">
+                    <h2>Day full of Teddies/h2>
+                    <p>₹1,529</p>
+                </div>
+                <div class="product" data-price="1449" data-name="Enchanting floral delights collecton">
+                    <img src="https://assets.winni.in/product/primary/2014/8/41977.jpeg?dpr=1&w=400" alt="Enchanting floral delights collecton">
+                    <h2>Good Times Ahead Photo Frame</h2>
+                    <p>₹1,449</p>
+                </div>
+                <div class="product" data-price="7999" data-name="Classic valentines chocolates">
+                    <img src="https://assets.winni.in/product/primary/2024/1/93180.jpeg?dpr=1&w=400" alt="Classic valentines chocolates">
+                    <h2>Classic valentines chocolates</h2>
+                    <p>₹7,999</p>
+                </div>
+                <div class="product" data-price="1899" data-name="Teddy with cadbury chocolate">
+                    <img src="https://assets.winni.in/product/primary/2023/1/81614.jpeg?dpr=1&w=400" alt="Teddy with cadbury chocolate">
+                    <h2>Teddy with cadbury chocolateh2>
+                    <p>₹1,899</p>
+                </div>
+
+    </main>
+
+<footer>
+    <h2>Personalised Gifts Online | Send Personalized Gifts Online</h2>
+        <p>When it comes to celebration, then nothing can beat the joy of sending and receiving gifts. But if the gift shows the resemblance of your special one, then the gift becomes a perfect keepsake of memory. Winni presents you a collection of personalised gift ideas that can speak your heart out and can easily impress the receiver with its elegance and grace. A little twist of the memory, when adorned to the simple gift, can really charm your dear ones. Place your order and send personalised gifts online to your special one on any special occasion. </p>
+        <h2>Order Personalized Gifts Online from Winni</h2>
+        <p>Whenever there is an occasion or special celebration, everyone rushes to buy a wonderful gift that can bring a sweet smile to your near and dear ones’ face. Some buy cake, some buy flowers and the list goes on. Sending and receiving gifts is the best part of every occasion. But this time, make it a little different so that your loved ones can remember it for the lifetime. And in that case, nothing can be more special than a gift holding a special memory. The charm of customized gifts is quite different. These kinds of gifts very well know how to win others’ hearts and make them feel special. The best part about these gifts is the personal touch of your memory reflecting some precious moments that are special to you. Winni better understands how much your loved ones are really important in your life and therefore brings you a complete range of unique gifts including personalised lamps, key chains, gadgets, cakes, t-shirts, cushions, lamps, jewellery. It's perfect to make your dear one jump with joy. We know that gifts are a way of expressing your feelings and warm wishes which may not be easy to show in words. So, you definitely need a medium and our personalised gifts online are perfect for cheering you up. Hurry up! What are you looking for? Just place your order and send unique personalised gifts India to your loved ones residing in any corner of the nation. With Winni, you can come close to the one living away from you and make them feel loved. Explore the best personalized gift ideas online wth Winni.</p>
+        <h2>Personalised Gift Delivery to your Loved Ones </h2>
+        <p>You can customize your love with Winni wielding the power to curate the special token of your love to fully embody your emotions of love and gratitude. The personalized gifts in India from Winni are customized with great precision and talent so that your gift speaks of your love even when you are not present physically to declare it. Just as each relation is special and unique in its own way, each and every personalized gift idea of ours is uniquely crafted to pay tribute to that perfect and unique bond which joins you both. To bring a smile on your loved one’s face, you can either send these personalized gifts to India separately or in an exciting combo pack with same day gift delivery or midnight delivery from Winni.</p>
+        <h2>Capture Special Moments with Lovely Personalized Gifts</h2>
+        <p>There is nothing that can be more special than receiving a gift from your loved ones. Happiness doubles at that time when the gift is also beautiful. It will really make a lasting impression on your dear ones. Buy personalised cushions, a keychain, mug, clutches, photo frame, etc featuring a quote or personal message or movie dialogue and image of your loved ones from Winni. Isn’t this lovely way to gift a precious memory along with a beautiful present to those who are close to your heart? Winni is a trustworthy gift portal and very much famous for the fast and hassle-free online personalised gifts delivery services in every corner of the nation. We are specifically known to deliver personalised valentine day gifts with utmost love and care to your loved ones. So what are you wondering for? Place your order and send personalized gifts online to the one missing you a lot and residing in the different corners of the nation. </p>
+        <h2 style="text-align: center">Send Personalised Gifts/ Customized Gifts Online - Winni</h2>
+        
+            
+        
+    </table>
+        
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <td>Personalised Mugs</td>
+            <td>Personalised Beer Mugs</td>
+            <td>Personalised Jewellery</td>
+        </tr>
+        <tr>
+            <td>Personalised Gifts</td>
+            <td>Personalised T-Shirts</td>
+            <td>Personalised Lamps</td>
+        </tr>
+        <tr>
+            <td>Personalised Cushions</td>
+            <td>Personalised Key Chains</td>
+            <td>Personalised Wine Glasses</td>
+        </tr>
+    </table>
+        <h2>Send Personalised Gifts to Special Ones & Win Their Heart</h2>
+        <p>Personalised gifts are indeed the best way of expressing your feelings to a person. It is a unique way of surprising someone who holds an important place in our heat. These items are nothing but reflections of your thoughts that you have put while finding personalized gift ideas for your recipient. At Winni, you can order personalised t-shirts or any other present from us and we promise to provide a distinctive approach to the receiver. It incorporates the efforts and cares you put in to make them feel special. Winni.in is India's top online gift delivery platform and we endeavor to provide a range of personalized gifts online. We have an arrangement of gifts for young men, women, teenagers, kids, and senior citizens as well. We keep in mind the preferences of all cultures and age groups alike. We have handpicked some online personalised gifts for our customized gifts section so that feelings can be communicated perfectly. This particular gift section allows you to upload your design, text, or image, or you can also choose from our variety of templates while placing the order. There is a large variety to choose from an assortment of customized gifts like personalised mugs, key chains, cakes, t-shirts, cushions, lamps, jewellery, etc. These articles can also be used by organizations as a promotional gift item or for gifting to their employees. While gifting, it is the thought behind the gifting idea that counts the most. Winni offers a vast collection of unique personalised gifts India that are exciting enough to woo the recipient. Order now and enjoy the joy of giving away online personalised gifts to your dear and near ones in India! Winni is fastly becoming the biggest gifting brand in India, delivering quality and on-time services to its million clients.</p>
+        <h2>Send Personalized Gifts to India from Winni with Love</h2>
+        <p>We bridge the distance between you and your loved ones through our online gifts delivery services. Yes, no matter how far you are from your dear ones, still can send a surprise personalized gift their way with us. We make sure that all the products are delivered right on time and also offer easy payment options to offer you a blissful shopping experience. Also, bring a charming and amazing smile on your husband’s or wife’s face, when you send them a personalized gift directly. Yes, surprises bring a lot of cheer and happiness, so enhance it with us. All you need to do is order the product on our site and rest we will take care of by delivering it directly to anywhere in India. Premium delivery services, right time delivery, amazing products make us your preferred online shopping partner in India. So, what are you waiting for? Browse through our handpicked collection of gifts for your loved ones and give them colorful surprises that last forever.</p>
+        <h2>Order Personalized Gifts for Him/Her in India</h2>
+        <p>Sending gifts to your loved ones is the best way to keep your connections strong even when you are away. So if you are living away from your friends and family, buy customized gifts from our website and express your emotions despite the geographical distance between you. We offer free shipping when you choose to send personalized gifts for men to India from the country or abroad. Pick from the plethora of gifts that are available on the website and let your emotions be felt to the people you admire the most. Send personalized gifts to your dear ones in India consisting of mugs, photo frames or accessories to express your feelings.</p>
+        <p>Data last updated on 27/06/2024</p>
+        <p>Online Ferrero Rocher Chocolates<br>
+		<p>Products in this category have been rated 4.7 out of 5 based on 362 reviews.<br>
+		We have a collection of 49 Products on sale, ranging from INR 999 to INR 8999</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Our Company</h3>
+                <ul>
+                   
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">In News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                   
+                    <li><a href="#">Wishes</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Customer Reviews</a></li>
+                    <li><a href="#">Blog - Celebrate Relations</a></li>
+                    <li><a href="#">Corporate Order</a></li>
+                    <li><a href="#">Franchise Enquiry</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Policy & Security</h3>
+                <ul>
+                  
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Bug Bounty</a></li>
+                    <li><a href="#">Data Security</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Payments and Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect with Us</h3>
+                <a href="https://www.facebook.com/WinniGifts"><img src="https://assets.winni.in/groot/2023/07/19/desktop/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/winnigifts/"><img src="https://assets.winni.in/groot/2023/07/19/desktop/instagram.png" alt="Instagram"></a>
+                <a href="https://twitter.com/winni_gifts"><img src="https://assets.winni.in/groot/2023/12/14/desktop/twiter.png" alt="Twitter"></a>
+                <a href="https://www.linkedin.com/company/winni"><img src="https://assets.winni.in/groot/2023/07/19/desktop/linkdin.png" alt="LinkedIn"></a>
+                <a href="https://www.youtube.com/channel/UCsXnWQIHuO3DOr-AhtftD2w"><img src="https://assets.winni.in/groot/2023/07/19/desktop/youtube.png" alt="YouTube"></a>
+                <a href="https://www.whatsapp.com/channel/0029VaAqyET72WTsWYuAqe3Z"><img src="https://assets.winni.in/groot/2024/04/23/mobile/black-whatsapp-icon.png" alt="WhatsApp"></a>
+            </div>
+          
+            <div class="footer-app">
+                <p>Experience Winni on mobile</p>
+                <a href="https://play.google.com/store/apps/details?id=in.winni.app&referrer=utm_source%3Dwinni-website%26utm_medium%3Dweb-link"><img src="https://assets.winni.in/groot/2023/07/19/desktop/google-play.png" alt="Google Play"></a>
+                <a href="https://apps.apple.com/in/app/winni-cake-flowers-gifts/id1080301515"><img src="https://assets.winni.in/groot/2023/07/19/desktop/app-store.png" alt="App Store"></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2024 Winni.in. All Rights Reserved</p>
+                <p>Company Name: Dhawala Online Solutions Private Limited | CIN: U51109KA2012PTC065653 | Regd. Office Address: 3rd Floor, PLOT. NO # 128/P2, EPIP Industrial Area Whitefield, Sonnenahalli Village, Bangalore - 560066 | Contact no. +91 - 7829463510 | E-mail: info@winni.in</p>
+            </div>
+        </div>
+</footer>
+
+<!-- JavaScript for filtering products -->
+<script>
+    function filterProducts() {
+        // Replace this function with your actual filtering logic
+        alert('Implement your filtering logic here.');
+    }
+</script>
+</body>
+</html>

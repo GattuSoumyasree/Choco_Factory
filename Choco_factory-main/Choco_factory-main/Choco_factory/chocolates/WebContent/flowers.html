@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate And Flowers</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    .logo {
+        width: 150px;
+        height: auto;
+    }
+
+    #logo-img {
+        width: 65%;
+        height: 65%;
+        display: block;
+    }
+    #cart-count {
+        position: absolute;
+        top: -11px;
+        right: -7px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 3px 5px;
+        font-size: 12px;
+    }
+
+    #cart-icon {
+        position: relative;
+        display: inline-block;
+    }
+    .wishlist-icon {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed for vertical positioning */
+    right: 10px; /* Adjust as needed for horizontal positioning */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 50%;
+    color: red;
+    z-index: 1;
+}
+
+.wishlist-icon i {
+    color: #c2406b;
+    font-size: 20px;
+}
+.wishlist-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width:80%;
+            max-width:600px;
+            border-radius:8px;
+            overflow-y:auto;
+            max-height:80%;
+        }
+.wishlist-popup h2 {
+            margin-top: 0;
+        }
+        .wishlist-popup ul {
+            list-style: none;
+            padding: 0;
+        }
+        .wishlist-popup li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .wishlist-popup li:last-child {
+            border-bottom: none;
+        }
+   
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Chocolate Fusion" id="logo-img">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for gifts" oninput="filterProducts()">
+            <button onclick="filterProducts()">Search</button>
+        </div>
+        <div class="user-options">
+             
+            <a href="del.html"><i class="fas fa-map-marker-alt"></i> Delivery Location</a>
+            <a href="#"><i class="fas fa-heart" id="wishlist-icon"></i></a>
+            <a href="cart" id="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+            <a href="login.jsp"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav class="categories">
+        <a href="#">EXPRESS</a>
+        <a href="#">CAKES</a>
+        <a href="#">FLOWERS</a>
+        <a href="#">PLANTS</a>
+        <a href="#">GIFTS</a>
+        <a href="#">PERSONALIZED GIFTS</a>
+        <div class="dropdown">
+            <a href="#">CHOCOLATES</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Type</h4>
+                    <a href="all.html"><i>All Chocolates</i></a>
+                    <a href="best.html"><i>Best Seller Chocolates</i></a>
+                    <a href="personalized.html"><i>Personalized Chocolates</i></a>
+                    <a href="bouquet.html"><i>Chocolate Bouquet</i></a>
+                    <a href="premium.html"><i>Premium chocolates</i></a>
+                    <a href="hampers.html"><i>Chocolate Hampers</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Flavor</h4>
+                    <a href="dark.html"><i>Dark Chocolates</i></a>
+                    <a href="milk.html"><i>Milk Chocolates</i></a>
+                    <a href="white.html"><i>White Chocolates</i></a>
+                    <a href="sugarfree.html"><i>Sugar Free Chocolates</i></a>
+                    <a href="handmade.html"><i>Hand Made Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Brand</h4>
+                    <a href="winni.html"><i>Winni Chocolates</i></a>
+                    <a href="page2.html"><i>Cadbury Chocolates</i></a>
+                    <a href="page1.html"><i>Ferrero Rocher Chocolates</i></a>
+                    <a href="justrufs.html"><i>Jus trufs Chocolates</i></a>
+                    <a href="Velvet.html"><i>Velvet Fine Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Combos</h4>
+                    <a href="combos.html"><i>Chocolate Combos</i></a>
+                    <a href="cakes.html"><i>Chocolate And Cakes</i></a>
+                    <a href="flowers.html"><i>Chocolate And Flowers</i></a>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;By Occasions</h4>
+                    <a href="birth.html"><i>Birthday Chocolate</i></a>
+                    <a href="anni.html"><i>Anniversary Chocolate</i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#">COMBOS</a>
+        <a href="#">BIRTHDAY</a>
+        <a href="#">ANNIVERSARY</a>
+        <a href="#">OCCASIONS</a>
+    </nav>
+    <main>
+        <div class="page-title">
+            <h1>Chocolate And Flowers</h1>
+            <div class="filter-sort">
+                <div class="date">
+                    <label for="delivery-date">Delivery Date:</label>
+                    <input type="date" id="delivery-date">
+                </div>
+                <div class="filter">
+                    <label for="filter-price">Filter By Price</label>
+                    <select id="filter-price" onchange="filterProducts()">
+                        <option value="all">All Products</option>
+                        <option value="under-1000">Under ₹1000</option>
+                        <option value="1000-5000">₹1000 - ₹5000</option>
+                        <option value="above-5000">Above ₹5000</option>
+                    </select>
+                </div>
+                <div class="sort">
+                    <label for="sort-by">Sort By</label>
+                    <select id="sort-by" onchange="sortProducts()">
+                        <option value="popularity">Popularity</option>
+                        <option value="low-to-high">Price: Low to High</option>
+                        <option value="high-to-low">Price: High to Low</option>
+                        <option value="newest-first">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <ul>
+        <div class="products" id="products">
+            <div class="product" data-id="121" data-price="849" data-name="Glowing With Love ">
+                <img src="https://assets.winni.in/product/primary/2014/6/30536.jpeg?dpr=1&w=400" alt="Glowing With Love">
+                <li><a href="productDetails?id=121">Glowing With Love</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹849</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-id="122" data-price="699" data-name="Blue Splash">
+                <img src="https://assets.winni.in/product/primary/2014/8/39474.jpeg?dpr=1&w=400" alt="Blue Splash">
+                <li><a href="productDetails?id=122">Blue Splash</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹699</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-id="123" data-price="849" data-name="Color Of Red">
+                <img src="https://assets.winni.in/product/primary/2024/2/93891.jpeg?dpr=1&w=400" alt="Color Of Red">
+                <li><a href="productDetails?id=123">Color Of Red</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹849</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-id="124" data-price="1,769" data-name="Delight Divine Combo">
+                <img src="https://assets.winni.in/product/primary/2022/7/64892.jpeg?dpr=1&w=400" alt="Delight Divine Combo">
+                <li><a href="productDetails?id=124">Delight Divine Combo</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹1,769</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-id="125" data-price="779" data-name="Luxury Style">
+                <img src="https://assets.winni.in/product/primary/2021/10/55169.jpeg?dpr=1&w=400" alt="Luxury Style">
+                <li><a href="productDetails?id=125">Luxury Style</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹799</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-price="1,229" data-name="Mixed Roses Arrangement">
+                <img src="https://assets.winni.in/product/primary/2022/9/73371.png?dpr=1&w=400" alt="Meadow In A Hamper">
+                <li><a href="productDetails?id=126">Mixed Roses Arrangement</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹1,229</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-id="127" data-price="999" data-name="Cossy Bunch Of Love">
+                <img src="https://assets.winni.in/product/primary/2021/10/55154.jpeg?dpr=1&w=400" alt="Cossy Bunch Of Love">
+                <li><a href="productDetails?id=127">Cossy Bunch Of Love</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹999</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+            </div>
+            <div class="product" data-id="128" data-price="799" data-name="Ocean Of Blue">
+                <img src="https://assets.winni.in/product/primary/2014/8/39472.jpeg?dpr=1&w=400" alt="Ocean Of Blue">
+                <li><a href="productDetails?id=128">Ocean Of Blue</a></li>
+                <br>
+                <button class='button add-to-cart'>Add to Cart</button>
+                <p>₹799</p>
+                <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+        </div>
+        </ul>
+    </main>
+    <footer>
+        <p>Indulge in the rich, creamy goodness of chocolate and flowers with Winni! Our collection offers an array of premium quality chocolate and flowers, perfect for every occasion. Whether you're treating yourself or gifting a loved one, our chocolate and flowers promise a melt-in-your-mouth experience that will leave you craving for more.</p>
+        <p>Why Choose Winni for Your Chocolate And Flowers Cravings?</p>
+        <ul>
+            <li><strong>Wide Range of Selection:</strong> From classic white chocolate bars to unique flavored options, our selection is curated to satisfy every palate.</li>
+            <li><strong>Premium Quality:</strong> We source our chocolates from top-notch brands ensuring you get nothing but the best.</li>
+            <li><strong>Perfect for Gifting:</strong> Packaged elegantly, our white chocolates make for an ideal gift for birthdays, anniversaries, or any special occasion.</li>
+            <li><strong>Convenient Online Shopping:</strong> Browse through our collection and place your order from the comfort of your home. Fast delivery guaranteed!</li>
+        </ul>
+        <p>At Winni, we believe that every moment is a celebration and our chocolate and flowers add the perfect touch of sweetness to your special moments. So why wait? Dive into the world of delicious chocolate and flowers and make your occasions memorable with Winni.</p>
+        <p>Order your favorite chocolate and flowers online today and experience the joy of indulging in the finest treats!</p>
+        <h2 style="text-align: center">ONLINE CHOCOLATE AND FLOWERS PRICE LIST</h2>
+        </tbody>
+    </table>
+       
+        <table border="1" align="center">
+            <tr>
+                <th>Ferrero Rocher Chocolates</th>
+                <th>PRICE (RS)</th>
+            </tr>
+            <tr>
+                <td>Glowing with love </td>
+                <td>Rs. 849</td>
+            </tr>
+            <tr>
+                <td>Love Affair Of Roses And Chocolates Bouquet</td>
+                <td>Rs. 879</td>
+            </tr>
+            <tr>
+                <td>Adorable Expressions</td>
+                <td>Rs. 1,359</td>
+            </tr>
+            <tr>
+                <td>Wonderful Pink Roses Display</td>
+                <td>Rs. 899</td>
+            </tr>
+            <tr>
+                <td>Graceful Roses and Chocolates Arrangement</td>
+                <td>Rs. 799</td>
+            </tr>
+            <tr>
+                <td>Delight Divine Combo</td>
+                <td>Rs. 1,769</td>
+            </tr>
+            <tr>
+                <td>Luxury Style</td>
+                <td>Rs. 799</td>
+            </tr>
+            <tr>
+                <td>Mixed Roses Arrangement</td>
+                <td>Rs. 1,299</td>
+            </tr>
+            <tr>
+                <td>Love Trio Delight with Rosy Bliss</td>
+                <td>Rs. 1,179</td>
+            </tr>
+            <tr>
+                <td>Blue Splash</td>
+                <td>Rs. 699</td>
+            </tr>
+        </table>
+        <p>Data last updated on 22/06/2024</p>
+        <p>Online Chocolate And Flowers<br>
+<p>Products in this category have been rated 4.7 out of 5 based on 362 reviews.<br>
+We have a collection of 49 Products on sale, ranging from INR 999 to INR 8999</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Our Company</h3>
+                <ul>
+                   
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">In News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                   
+                    <li><a href="#">Wishes</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Customer Reviews</a></li>
+                    <li><a href="#">Blog - Celebrate Relations</a></li>
+                    <li><a href="#">Corporate Order</a></li>
+                    <li><a href="#">Franchise Enquiry</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Policy & Security</h3>
+                <ul>
+                 
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Bug Bounty</a></li>
+                    <li><a href="#">Data Security</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Payments and Security</a></li>
+                </ul>
+            </div>
+       
+            <div class="footer-social">
+                <h3>Connect with Us</h3>
+                <a href="https://www.facebook.com/WinniGifts"><img src="https://assets.winni.in/groot/2023/07/19/desktop/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/winnigifts/"><img src="https://assets.winni.in/groot/2023/07/19/desktop/instagram.png" alt="Instagram"></a>
+                <a href="https://twitter.com/winni_gifts"><img src="https://assets.winni.in/groot/2023/12/14/desktop/twiter.png" alt="Twitter"></a>
+                <a href="https://www.linkedin.com/company/winni"><img src="https://assets.winni.in/groot/2023/07/19/desktop/linkdin.png" alt="LinkedIn"></a>
+                <a href="https://www.youtube.com/channel/UCsXnWQIHuO3DOr-AhtftD2w"><img src="https://assets.winni.in/groot/2023/07/19/desktop/youtube.png" alt="YouTube"></a>
+                <a href="https://www.whatsapp.com/channel/0029VaAqyET72WTsWYuAqe3Z"><img src="https://assets.winni.in/groot/2024/04/23/mobile/black-whatsapp-icon.png" alt="WhatsApp"></a>
+            </div>
+         
+            <div class="footer-app">
+                <p>Experience Winni on mobile</p>
+                <a href="https://play.google.com/store/apps/details?id=in.winni.app&referrer=utm_source%3Dwinni-website%26utm_medium%3Dweb-link"><img src="https://assets.winni.in/groot/2023/07/19/desktop/google-play.png" alt="Google Play"></a>
+                <a href="https://apps.apple.com/in/app/winni-cake-flowers-gifts/id1080301515"><img src="https://assets.winni.in/groot/2023/07/19/desktop/app-store.png" alt="App Store"></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2024 Winni.in. All Rights Reserved</p>
+                <p>Company Name: Dhawala Online Solutions Private Limited | CIN: U51109KA2012PTC065653 | Regd. Office Address: 3rd Floor, PLOT. NO # 128/P2, EPIP Industrial Area Whitefield, Sonnenahalli Village, Bangalore - 560066 | Contact no. +91 - 7829463510 | E-mail: info@winni.in</p>
+            </div>
+        </div>
+    </footer>
+<div class="wishlist-popup" id="wishlist-popup">
+        <h2>Your Wishlist</h2>
+        <ul id="wishlist-items"></ul>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const wishlistIcons = document.querySelectorAll('.wishlist-icon');
+        const wishlistPopup = document.getElementById('wishlist-popup');
+        const wishlistItems = document.getElementById('wishlist-items');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        let wishlist = [];
+
+        // Add event listeners to all wishlist icons
+        wishlistIcons.forEach(icon => {
+            icon.addEventListener('click', function () {
+                const product = this.closest('.product');
+                const productName = product.getAttribute('data-name');
+                const productPrice = product.getAttribute('data-price');
+                const productImage = product.querySelector('img').src;
+
+                wishlist.push({ name: productName, price: productPrice, image: productImage });
+                alert(`${productName} has been added to your wishlist!`);
+            });
+        });
+
+        // Show wishlist popup when wishlist icon in header is clicked
+        const wishlistIcon = document.getElementById('wishlist-icon');
+        wishlistIcon.addEventListener('click', function () {
+            wishlistItems.innerHTML = '';
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = '<li>Your wishlist is empty.</li>';
+            } else {
+                wishlist.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width:50px; margin-right:10px;"> ${item.name} - ₹${item.price}`;
+                    wishlistItems.appendChild(li);
+                });
+            }
+            wishlistPopup.style.display = 'block';
+        });
+
+        // Close wishlist popup when clicking outside of it
+        window.addEventListener('click', function (event) {
+            if (event.target === wishlistPopup) {
+                wishlistPopup.style.display = 'none';
+            }
+        });
+
+        // Functionality to add items to cart
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const product = this.closest('.product');
+                const productId = product.getAttribute('data-id');
+                const productName = product.getAttribute('data-name');
+                const productPrice = product.getAttribute('data-price');
+
+                const cartItem = {
+                    id: productId,
+                    name: productName,
+                    price: productPrice
+                };
+
+                // Simulate adding to cart - you would implement this as needed
+                addToCart(cartItem);
+            });
+        });
+
+        // Example function to simulate adding to cart
+        function addToCart(item) {
+            alert(`Added ${item.name} to cart!`);
+            // Implement your actual cart logic here (e.g., AJAX call to backend)
+        }
+    });
+    </script>
+</body>
+</html>

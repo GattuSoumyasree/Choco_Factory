@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+	.logo {
+    /* Adjust width and height as needed */
+    width: 150px; /* Example width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Optional: Style the logo image itself */
+#logo-img {
+    width: 65%; /* Ensures the logo fills its container */
+    height: 65%; /* Ensures the logo scales proportionally */
+    display: block; /* Ensures no extra space around the image */
+}
+#cart-count {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+/* Zoom effect */
+        .zoom {
+            transition: transform 0.5s ease;
+        }
+
+        .zoom:hover {
+            transform: scale(1.5); /* Adjust the scale as needed */
+        }
+</style>
+<body>
+    <header>
+        <div class="logo">
+    		<img src="logo.jpg" alt="Chocolate Fusion" id="logo-img">
+		</div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for gifts" oninput="filterProducts()">
+            <button onclick="filterProducts()">Search</button>
+        </div>
+        <div class="user-options">
+            <a href="del.html"><i class="fas fa-map-marker-alt"></i> Delivery Location</a>
+            <a href="cart.html" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+            <a href="login.jsp"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav class="categories">
+        <!-- Navigation Menu -->
+        <a href="#">EXPRESS</a>
+        <a href="#">CAKES</a>
+        <a href="#">FLOWERS</a>
+        <a href="#">PLANTS</a>
+        <a href="#">GIFTS</a>
+        <a href="#">PERSONALIZED GIFTS</a>
+        <div class="dropdown">
+            <a href="#">CHOCOLATES</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Type</h4>
+                    <a href="all.html"><i>All Chocolates</i></a>
+                    <a href="best.html"><i>Best Seller Chocolates</i></a>
+                    <a href="personalized.html"><i>Personalized Chocolates</i></a>
+                    <a href="bouquet.html"><i>Chocolate Bouquet</i></a>
+                    <a href="premium.html"><i>Premium chocolates</i></a>
+                    <a href="hampers.html"><i>Chocolate Hampers</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Flavor</h4>
+                    <a href="dark.html"><i>Dark Chocolates</i></a>
+                    <a href="milk.html"><i>Milk Chocolates</i></a>
+                    <a href="white.html"><i>White Chocolates</i></a>
+                    <a href="sugarfree.html"><i>Sugar Free Chocolates</i></a>
+                    <a href="handmade.html"><i>Hand Made Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Brand</h4>
+                    <a href="winni.html"><i>Winni Chocolates</i></a>
+                    <a href="page2.html"><i>Cadbury Chocolates</i></a>
+                    <a href="page1.html"><i>Ferrero rocher Chocolates</i></a>
+                    <a href="justrufs.html"><i>Jus trufs Chocolates</i></a>
+                    <a href="Velvet.html"><i>Velvet Fine Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Combos</h4>
+                    <a href="combos.html"><i>Chocolate Combos</i></a>
+                    <a href="cakes.html"><i>Chocolate And Cakes</i></a>
+                    <a href="flowers.html"><i>Chocolate And Flowers</i></a>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;By Occasions</h4>
+                    <a href="birth.html"><i>Birthday Chocolate</i></a>
+                    <a href="anni.html"><i>Anniversary Chocolate</i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#">COMBOS</a>
+        <a href="#">BIRTHDAY</a>
+        <a href="#">ANNIVERSARY</a>
+        <a href="#">OCCASIONS</a>
+
+    </nav>
+    <main>
+        <div id="product-details">
+            <img id="product-image" src="" alt="Product Image" class="zoom">
+            <div class="product-info">
+                <h2 id="product-name">Product Name</h2>
+                <p id="product-price">₹0</p>
+                <button onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Footer Content -->
+        <p>Indulge in the rich, creamy goodness of white chocolates with Winni! Our collection offers an array of premium quality white chocolates, perfect for every occasion. Whether you're treating yourself or gifting a loved one, our white chocolates promise a melt-in-your-mouth experience that will leave you craving for more.</p>
+        <p>Why Choose Winni for Your White Chocolate Cravings?</p>
+        <ul>
+            <li><strong>Wide Range of Selection:</strong> From classic white chocolate bars to unique flavored options, our selection is curated to satisfy every palate.</li>
+            <li><strong>Premium Quality:</strong> We source our chocolates from top-notch brands ensuring you get nothing but the best.</li>
+            <li><strong>Perfect for Gifting:</strong> Packaged elegantly, our white chocolates make for an ideal gift for birthdays, anniversaries, or any special occasion.</li>
+            <li><strong>Convenient Online Shopping:</strong> Browse through our collection and place your order from the comfort of your home. Fast delivery guaranteed!</li>
+        </ul>
+        <p>At Winni, we believe that every moment is a celebration and our white chocolates add the perfect touch of sweetness to your special moments. So why wait? Dive into the world of delicious white chocolates and make your occasions memorable with Winni.</p>
+        <p>Order your favorite white chocolates online today and experience the joy of indulging in the finest treats!</p>
+
+        </tbody>
+        <p>Data last updated on 22/06/2024</p>
+		<p>Products in this category have been rated 4.7 out of 5 based on 362 reviews.<br>
+		We have a collection of 49 Products on sale, ranging from INR 999 to INR 8999</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Our Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">In News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Wishes</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Customer Reviews</a></li>
+                    <li><a href="#">Blog - Celebrate Relations</a></li>
+                    <li><a href="#">Corporate Order</a></li>
+                    <li><a href="#">Franchise Enquiry</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Policy & Security</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Bug Bounty</a></li>
+                    <li><a href="#">Data Security</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Payments and Security</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-social">
+                <h3>Connect with Us</h3>
+                <a href="https://www.facebook.com/WinniGifts"><img src="https://assets.winni.in/groot/2023/07/19/desktop/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/winnigifts/"><img src="https://assets.winni.in/groot/2023/07/19/desktop/instagram.png" alt="Instagram"></a>
+                <a href="https://twitter.com/winni_gifts"><img src="https://assets.winni.in/groot/2023/12/14/desktop/twiter.png" alt="Twitter"></a>
+                <a href="https://www.linkedin.com/company/winni"><img src="https://assets.winni.in/groot/2023/07/19/desktop/linkdin.png" alt="LinkedIn"></a>
+                <a href="https://www.youtube.com/channel/UCsXnWQIHuO3DOr-AhtftD2w"><img src="https://assets.winni.in/groot/2023/07/19/desktop/youtube.png" alt="YouTube"></a>
+                <a href="https://www.whatsapp.com/channel/0029VaAqyET72WTsWYuAqe3Z"><img src="https://assets.winni.in/groot/2024/04/23/mobile/black-whatsapp-icon.png" alt="WhatsApp"></a>
+            </div>
+          
+            <div class="footer-app">
+                <p>Experience Winni on mobile</p>
+                <a href="https://play.google.com/store/apps/details?id=in.winni.app&referrer=utm_source%3Dwinni-website%26utm_medium%3Dweb-link"><img src="https://assets.winni.in/groot/2023/07/19/desktop/google-play.png" alt="Google Play"></a>
+                <a href="https://apps.apple.com/in/app/winni-cake-flowers-gifts/id1080301515"><img src="https://assets.winni.in/groot/2023/07/19/desktop/app-store.png" alt="App Store"></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2024 Winni.in. All Rights Reserved</p>
+                <p>Company Name: Dhawala Online Solutions Private Limited | CIN: U51109KA2012PTC065653 | Regd. Office Address: 3rd Floor, PLOT. NO # 128/P2, EPIP Industrial Area Whitefield, Sonnenahalli Village, Bangalore - 560066 | Contact no. +91 - 7829463510 | E-mail: info@winni.in</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="script.js" > </script>
+</body>
+</html>

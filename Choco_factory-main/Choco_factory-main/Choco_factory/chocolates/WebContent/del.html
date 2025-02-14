@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Search</title>
+    <link rel="stylesheet" href="del.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">MyChocoShop</div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for gifts" oninput="filterProducts()">
+            <button onclick="filterProducts()">Search</button>
+        </div>
+        <div class="user-options">
+            <a href="del.html"><i class="fas fa-map-marker-alt"></i> Delivery Location</a>
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="cart.html" id="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+            <a href="login.jsp"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav class="categories">
+        <a href="#">EXPRESS</a>
+        <a href="#">CAKES</a>
+        <a href="#">FLOWERS</a>
+        <a href="#">PLANTS</a>
+        <a href="#">GIFTS</a>
+        <a href="#">PERSONALIZED GIFTS</a>
+        <div class="dropdown">
+            <a href="#">CHOCOLATES</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Type</h4>
+                    <a href="all.html"><i>All Chocolates</i></a>
+                    <a href="best.html"><i>Best Seller Chocolates</i></a>
+                    <a href="personalized.html"><i>Personalized Chocolates</i></a>
+                    <a href="bouquet.html"><i>Chocolate Bouquet</i></a>
+                    <a href="premium.html"><i>Premium chocolates</i></a>
+                    <a href="hampers.html"><i>Chocolate Hampers</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Flavor</h4>
+                    <a href="dark.html"><i>Dark Chocolates</i></a>
+                    <a href="milk.html"><i>Milk Chocolates</i></a>
+                    <a href="white.html"><i>White Chocolates</i></a>
+                    <a href="sugarfree.html"><i>Sugar Free Chocolates</i></a>
+                    <a href="handmade.html"><i>Hand Made Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Brand</h4>
+                    <a href="winni.html"><i>Winni Chocolates</i></a>
+                    <a href="page2.html"><i>Cadbury Chocolates</i></a>
+                    <a href="page1.html"><i>Ferrero rocher Chocolates</i></a>
+                    <a href="justrufs.html"><i>Jus trufs Chocolates</i></a>
+                    <a href="Velvet.html"><i>Velvet Fine Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Combos</h4>
+                    <a href="combos.html"><i>Chocolate Combos</i></a>
+                    <a href="cakes.html"><i>Chocolate And Cakes</i></a>
+                    <a href="flowers.html"><i>Chocolate And Flowers</i></a>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;By Occasions</h4>
+                    <a href="birth.html"><i>Birthday Chocolate</i></a>
+                    <a href="anni.html"><i>Anniversary Chocolate</i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#">COMBOS</a>
+        <a href="#">BIRTHDAY</a>
+        <a href="#">ANNIVERSARY</a>
+        <a href="#">OCCASIONS</a>
+    </nav>
+            <div class="container">
+                <h1>Search for City or Pincode where you want delivery</h1>
+                <p class="subtext">Winni is delivering in 750+ cities across India</p>
+                <input type="text" id="searchInput" placeholder="Search by city or pincode" class="search-input">
+                <button onclick="searchPincode()">Search</button>
+                <h2>POPULAR CITIES</h2>
+                <div class="cities" id="cityList">
+                    <div class="city" onclick="selectCity('Ahmedabad')">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/0b258738542117.5765973d2bf54.jpg">
+                        <a href="main.html">Ahmedabad</a>
+                    </div>
+                    
+                    <div class="city" onclick="selectCity('Bengaluru')">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c504038542117.5765973d2c44e.jpg">
+                        <a href="main.html">Bengaluru</a>
+                    </div>
+                    <div class="city" onclick="selectCity('Chennai')">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f70aaf38542117.5765973d2cb73.jpg" alt="Delhi">
+                        <a href="main.html">Chennai</a>
+                    </div>
+                    <div class="city" onclick="selectCity('Lucknow')">
+                        <img src="https://th.bing.com/th/id/OIP.D1IR85t0S10GH2auVzTM7QHaHa?pid=ImgDet&w=474&h=474&rs=1">
+                        <a href="main.html">Lucknow</a>
+                    </div>
+                    <div class="city" onclick="selectCity('Mumbai')">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2ba20f38542117.5765973d219f3.jpg" alt="Mumbai">
+                        <a href="main.html">Mumbai</a>
+                    </div>
+                </div>
+            </div>
+            <div class="selected-info" id="selectedInfo">
+                <!-- Selected city or pincode info will be displayed here -->
+            </div>
+            <script src="script.js"></script>
+        </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .button {
+            padding: 10px 20px;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #5a3011;
+        }
+
+        .button:active {
+            background-color: #3d1f0a;
+        }
+        #cart-count {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MyChocoShop</div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for gifts">
+            <button>Search</button>
+        </div>
+        <div class="user-options">
+            <a href="del.html"><i class="fas fa-map-marker-alt"></i> Delivery Location</a>
+            <a href="cart.html" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+            <a href="login.jsp"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav class="categories">
+        <!-- Navigation Menu -->
+        <a href="#">EXPRESS</a>
+        <a href="#">CAKES</a>
+        <a href="#">FLOWERS</a>
+        <a href="#">PLANTS</a>
+        <a href="#">GIFTS</a>
+        <a href="#">PERSONALIZED GIFTS</a>
+        <div class="dropdown">
+            <a href="#">CHOCOLATES</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Type</h4>
+                    <a href="all.html"><i>All Chocolates</i></a>
+                    <a href="best.html"><i>Best Seller Chocolates</i></a>
+                    <a href="personalized.html"><i>Personalized Chocolates</i></a>
+                    <a href="bouquet.html"><i>Chocolate Bouquet</i></a>
+                    <a href="premium.html"><i>Premium chocolates</i></a>
+                    <a href="hampers.html"><i>Chocolate Hampers</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Flavor</h4>
+                    <a href="dark.html"><i>Dark Chocolates</i></a>
+                    <a href="milk.html"><i>Milk Chocolates</i></a>
+                    <a href="white.html"><i>White Chocolates</i></a>
+                    <a href="sugarfree.html"><i>Sugar Free Chocolates</i></a>
+                    <a href="handmade.html"><i>Hand Made Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Brand</h4>
+                    <a href="winni.html"><i>Winni Chocolates</i></a>
+                    <a href="page2.html"><i>Cadbury Chocolates</i></a>
+                    <a href="page1.html"><i>Ferrero rocher Chocolates</i></a>
+                    <a href="justrufs.html"><i>Jus trufs Chocolates</i></a>
+                    <a href="Velvet.html"><i>Velvet Fine Chocolates</i></a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By Combos</h4>
+                    <a href="combos.html"><i>Chocolate Combos</i></a>
+                    <a href="cakes.html"><i>Chocolate And Cakes</i></a>
+                    <a href="flowers.html"><i>Chocolate And Flowers</i></a>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;By Occasions</h4>
+                    <a href="birth.html"><i>Birthday Chocolate</i></a>
+                    <a href="anni.html"><i>Anniversary Chocolate</i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#">COMBOS</a>
+        <a href="#">BIRTHDAY</a>
+        <a href="#">ANNIVERSARY</a>
+        <a href="#">OCCASIONS</a>
+    </nav>
+    <main>
+        <center>
+            <h1>Address</h1>
+            <form action="/chocolates/billing" method="post">
+                <label for="fullName">Full Name:</label><br>
+                <input type="text" id="fullName" name="fullName" required><br><br>
+            
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+            
+                <label for="address">Address:</label><br>
+                <input type="text" id="address" name="address" required><br><br>
+            
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city" required><br><br>
+            
+                <label for="state">State:</label><br>
+                <input type="text" id="state" name="state" required><br><br>
+            
+                <label for="zip">Zip Code:</label><br>
+                <input type="text" id="zip" name="zip" required><br><br>
+            
+                <input type="submit" class="button" value="Proceed to Payment">
+            </form>
+        </center>
+    </main>
+     <br>
+    <footer>
+        <!-- Footer Content -->
+       
+        <p>Indulge in the rich, creamy goodness of white chocolates with Winni! Our collection offers an array of premium quality white chocolates, perfect for every occasion. Whether you're treating yourself or gifting a loved one, our white chocolates promise a melt-in-your-mouth experience that will leave you craving for more.</p>
+        <p>Why Choose Winni for Your White Chocolate Cravings?</p>
+        <ul>
+            <li><strong>Wide Range of Selection:</strong> From classic white chocolate bars to unique flavored options, our selection is curated to satisfy every palate.</li>
+            <li><strong>Premium Quality:</strong> We source our chocolates from top-notch brands ensuring you get nothing but the best.</li>
+            <li><strong>Perfect for Gifting:</strong> Packaged elegantly, our white chocolates make for an ideal gift for birthdays, anniversaries, or any special occasion.</li>
+            <li><strong>Convenient Online Shopping:</strong> Browse through our collection and place your order from the comfort of your home. Fast delivery guaranteed!</li>
+        </ul>
+        <p>At Winni, we believe that every moment is a celebration and our white chocolates add the perfect touch of sweetness to your special moments. So why wait? Dive into the world of delicious white chocolates and make your occasions memorable with Winni.</p>
+        <p>Order your favorite white chocolates online today and experience the joy of indulging in the finest treats!</p>
+    
+        <p>Data last updated on 22/06/2024</p>
+        <p>Products in this category have been rated 4.7 out of 5 based on 362 reviews.<br>
+        We have a collection of 49 Products on sale, ranging from INR 999 to INR 8999</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Our Company</h3>
+                <ul>
+                   
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                   
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul>
+                    
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('billingForm').addEventListener('submit', function(event) {
+            const zip = document.getElementById('zip').value;
+            if (!/^\d{1,7}$/.test(zip)) {
+                alert('Invalid ZIP code: It should be a number with 7 digits or less.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
